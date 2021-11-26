@@ -1,0 +1,81 @@
+<ion-content>
+   
+   
+      <form [formGroup]="formStep2">
+          <ion-slides  [pager]="true" [options]="slideOpts"  class="slide-full" >
+            <ion-slide *ngFor="let slide of slides" >
+              {{slide}}
+              <div formArrayName="listBeneficiary2">
+          <div *ngFor="let listBeneficiary2 of getListBeneficiary2.controls; let i=index"
+          [formGroupName]="i">
+          <div *ngIf="slide == i">
+            {{i}}
+          <ion-item>
+            <ion-label shape="round" position="floating"
+              >Nombres y apellidos</ion-label>
+            <ion-input class="input-text" formControlName="names"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>tipo de documento</ion-label>
+            <ion-select formControlName="typeDocument" interface="popover">
+              <ion-select-option value="cc"
+                >cedula de ciudadania</ion-select-option
+              >
+              <ion-select-option value="ti"
+                >tarjeta de identidad</ion-select-option
+              >
+              <ion-select-option value="t2">tipo 2</ion-select-option>
+              <ion-select-option value="t3">tipo 3</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label shape="round" position="floating"
+              >Número de identificación</ion-label
+            >
+            <ion-input
+              class="input-text"
+              formControlName="identificationNumber"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Fecha de nacimiento </ion-label>
+            <ion-datetime formControlName="birthDate"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label shape="round" position="floating"
+              >Número de telefono celular</ion-label
+            >
+            <ion-input
+              class="input-text"
+              formControlName="phone"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label shape="round" position="floating"
+              >Correo electronico</ion-label
+            >
+            <ion-input
+              class="input-text"
+              formControlName="email"
+            ></ion-input>
+          </ion-item>
+        </div>
+        </div>
+      </div>
+      </ion-slide>
+      </ion-slides>
+
+
+      <ion-buttons slot="end">
+        <ion-button (click)="onClick()" color="danger">
+          <ion-icon slot="icon-only" 
+                    [name]=" favorito ? 'heart':'heart-outline' ">
+          </ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      </form>
+    
+  
+  
+</ion-content>
